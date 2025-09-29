@@ -7,14 +7,14 @@ return {
             local lsp_zero = require("lsp-zero")
             lsp_zero.extend_lspconfig()
             lsp_zero.on_attach(function(client, bufnr)
-                lsp_zero.default_keymaps({buffer = bufnr})
+                lsp_zero.default_keymaps({ buffer = bufnr })
             end)
         end
     },
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            {"hrsh7th/cmp-nvim-lsp"},
+            { "hrsh7th/cmp-nvim-lsp" },
         }
     },
     {
@@ -29,10 +29,11 @@ return {
                 function(server_name)
                     require("lspconfig")[server_name].setup({})
                 end,
-                ltex = function ()
+                ltex = function()
                     require("lspconfig").ltex.setup({
                         settings = {
                             ltex = {
+                                language = "de-DE",
                                 additionalRules = {
                                     languageModel = "~/ngrams"
                                 }
@@ -52,7 +53,7 @@ return {
                 "hrsh7th/cmp-path"
             }
         },
-        config = function ()
+        config = function()
             local cmp = require("cmp")
             local cmp_action = require("lsp-zero").cmp_action()
             cmp.setup({
@@ -62,15 +63,15 @@ return {
                     end,
                 },
                 sources = {
-                    {name = "copilot"},
-                    {name = "nvim_lsp"},
-                    {name = "luasnip"},
-                    {name = "nvim_lua"},
-                    {name = "buffer"},
-                    {name = "path"},
+                    { name = "copilot" },
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "nvim_lua" },
+                    { name = "buffer" },
+                    { name = "path" },
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm({select = false}),
+                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
                     ["<Tab>"] = cmp_action.tab_complete(),
                     ["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
                 }),
