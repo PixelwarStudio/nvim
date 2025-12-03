@@ -1,11 +1,13 @@
 return {
     {
         "zbirenbaum/copilot-cmp",
-        opts = {}
+        opts = {},
+        enabled = false
     },
     {
         "zbirenbaum/copilot.lua",
         event = "InsertEnter",
-        opts = {}
+        opts = {},
+        enabled = false
     }
 }
